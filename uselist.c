@@ -3,8 +3,8 @@
 #include "list.h"
 
 struct num{
-	int *nums;
-	int len;
+	int	*nums;
+	int	len;
 };
 
 void *operate(void *arg)
@@ -14,7 +14,8 @@ void *operate(void *arg)
 
 	pthread_mutex_lock(&insMutex);
 	struct num *NS = (struct num*)arg;
-	int *N; 
+	int *N;
+	
 	N = NS->nums;
 	int size = NS->len;
 
@@ -36,6 +37,7 @@ void *operate(void *arg)
 int main(int argc,char **argv){
 	
 	pthread_t threads[4];
+	
 	int arr1[] = {9,4,6,7,8,3};
 	int arr2[] = {91,23,45,67,89};
 	int arr3[] = {80,82,83,84};
@@ -50,10 +52,13 @@ int main(int argc,char **argv){
 	struct num *nsptr;
 	nstruct[0].nums = arr1;
 	nstruct[0].len = len1;
+	
 	nstruct[1].nums = arr2;
 	nstruct[1].len = len2;
+	
 	nstruct[2].nums = arr3;
 	nstruct[2].len = len3;
+	
 	nstruct[3].nums = arr4;
 	nstruct[3].len = len4;
 
